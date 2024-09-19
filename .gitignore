@@ -15,3 +15,8 @@ Thumbs.db
 #Exclude build artifacts
 *.log
 *.tmp
+
+target
+.target
+target/
+.target/
