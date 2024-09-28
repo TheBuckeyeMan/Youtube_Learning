@@ -16,7 +16,9 @@ Thumbs.db
 *.log
 *.tmp
 
-target
 .target
-target/
+target
 .target/
+target/
+target/*
+.target/*
