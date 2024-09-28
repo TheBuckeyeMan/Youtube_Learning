@@ -23,7 +23,7 @@ jobs:
           java-version: '17'
 
       - name: Build with Maven
-        run: mvn package
+        run: mvn clean package
         env:
           API_KEY: ${{ secrets.API_KEY }}
 
