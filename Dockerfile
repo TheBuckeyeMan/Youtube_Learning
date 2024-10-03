@@ -1,11 +1,8 @@
-# Use the official Amazon Corretto image (Amazon's OpenJDK distribution)
-FROM amazoncorretto:17
+# Use Amazon Linux 2 as the base for AWS Lambda
+FROM public.ecr.aws/lambda/java:17
 
-# Set the working directory inside the container
-WORKDIR /app
+# Copy the built JAR file from Maven to the Lambda container
+COPY target/demo-0.0.1-SNAPSHOT.jar ${LAMBDA_TASK_ROOT}/app.jar
 
-# Copy the built JAR file from the target directory into the container
-COPY target/demo-0.0.1-SNAPSHOT.jar app.jar
-
-# Entry point for the container. This will run the JAR file
-ENTRYPOINT ["java", "-jar", "app.jar"]
+# Set the Spring Cloud Function adapter as the entry point
+CMD ["-cp", "/var/task/app.jar", "com.example.demo.LambdaHandler"]
